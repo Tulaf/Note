@@ -101,7 +101,13 @@ i2c等协议学习
 4. 再根据对应连接找到对应单板
 5. 在单板上找到对应的地方
 example:
-[iomuxcode](../pic/iomuxcode.png)
-[v20](../pic/v20.png)
-[gpio18](../pic/gpio18.png)
-[j78_2](../pic/j78_2.png)
+![iomuxcode](../pic/iomuxcode.png)
+![v20](../pic/v20.png)
+![gpio18](../pic/gpio18.png)
+![j78_2](../pic/j78_2.png)
+
+## 修改系统IP配置
+PROJ_SRC_ROOT/PROJ_NAME/
+$ make cfg_soc
+对应文件soc_config.v  生效文件.config
+

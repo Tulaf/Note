@@ -134,3 +134,76 @@ NMI(NonMaskableInterrupt)
 
 UPF: Unified Power Format
 PPA: Porformance power Architecture(Area) 芯片三个指标
+
+verification 前端验证
+validation   硅后(silicon)验证
+
+DUT （Design under Test）
+> simulation
+> checkers
+> coverage
+DUV（Design under Verification）
+
+kickoff 启动
+milestone 里程碑
+
+Fabless指的只从事芯片设计与销售，不从事生产的公司，这样的企业被成为“无厂化企业”，手机厂商中的华为、苹果和小米，还有高通和联发科，都属于 Fabless
+
+IDM 就是指既能够自行设计、也能够自行生产的芯片厂商，世界上有这种能力的不多，我们熟知的只有三星和英特尔。
+
+Foundry 是能够自行完成芯片制造，但是没有设计能力的厂商，就是我们所熟知的代工厂。
+
+
+FPGA（Field Programmable Gate Array）是在PAL （可编程阵列逻辑）、GAL（通用阵列逻辑）等可编程器件的基础上进一步发展的产物。它是作为专用集成电路（ASIC）领域中的一种半定制电路而出现的，既解决了定制电路的不足，又克服了原有可编程器件门电路数有限的缺点。
+
+ASIC(Application Specific Integrated Circuit)即专用集成电路，是指应特定用户要求和特定电子系统的需要而设计、制造的集成电路。 用CPLD（复杂可编程逻辑器件）和 FPGA（现场可编程逻辑门阵列）来进行ASIC设计是最为流行的方式之一，它们的共性是都具有用户现场可编程特性，都支持边界扫描技术，但两者在集成度、速度以及编程方式上具有各自的特点。
+
+barematel 裸机 （bare metal）
+
+block 阻塞
+
+PLIC  external interrupts 
+在riscv中一共定义了三种状态中断，对于hart层面，hart包含local中断源和global中断源。而local中断只有Timer和Software中断两种，而global中断则称为external interrupts。只有global中断源可以被PLIC core响应，通常为I/O device。
+
+eclic enhanced CORE LOCAL INTERRUPT  增强的内核中断控制器
+
+一般来说，timer和software是通过CLINT(CORE LOCAL INTERRUPT)，而外部中断通过PLIC处理。
+
+UT = Unit Test 单元测试
+IT = System Integration Test 集成测试
+ST = System Test 系统测试
+UAT = User Acceptance Test 用户接受测试(俗称:验收测试)
+
+
+spyglass 早期检查 （小型望远镜）
+
+meeting minutes 会议纪要
+
+signoff，签发。
+后端所说的signoff，是指将设计数据交给芯片制造厂商生产之前，对设计数据进行复检，确认设计数据达到交付标准，这些检查和确认统称为signoff。
+
+JEDEC 联合电子设备工程委员会（Joint Electron Device Engineering Council，JEDEC）.1999年，JEDEC独立成为行业协会，抛弃了原来名称中缩写的含义，目前的名称为JEDEC固态技术协会（JEDEC Solid State Technology Association）
+
+SMP: Symmetrical Multi-Processor  
+AMP: Asymmetrical Multi-Processor 异步多处理器
+
+spi:serial peripheral interface 串行外设接口
+Standard SPI、Dual SPI和Queued SPI三种协议接口，分别对应3-wire, 4-wire, 6-wire 
+
+MISO（ Master Input Slave Output）：主设备数据输入，从设备数据输出；
+MOSI（Master Output Slave Input）：主设备数据输出，从设备数据输入；
+SCLK（Serial Clock）：时钟信号，由主设备产生；
+CS/SS（Chip Select/Slave Select）：从设备使能信号，由主设备控制，一主多从时，CS/SS是从芯片是否被主芯片选中的控制信号，只有片选信号为预先规定的使能信号时（高电位或低电位），主芯片对此从芯片的操作才有效。
+
+
+XIP eXecute In Place 就地执行
+时钟频率
+时钟极性 CKP(cpol) Clock Polarity       CPOL=0 低电平为IDLE CPOL=1 高电平为idle
+时钟相位 CKE(cpha) Clock Phase (Edge)   CPHA=0 第一个跳变采样点为时钟边沿 CPHA=1 第二个跳变采样点为时钟边沿
+
+(1) BK1_nCS：片选输出（低电平有效），适用于 FLASH 1。如果 QSPI 始终在双闪存模式下工作，则其也可用于 FLASH 2从设备选择信号线。QSPI通讯以BK1_nCS线置低电平为开始信号，以BK1_nCS线被拉高作为结束信号。
+(2) CLK：时钟输出，适用于两个存储器，用于通讯数据同步。它由通讯主机产生，决定了通讯的速率，不同的设备支持的最高时钟频率不一样，如STM32的QSPI时钟频率最大为fpclk/2，两个设备之间通讯时，通讯速率受限于低速设备。
+(3) BK1_IO0：在双线 / 四线模式中为双向 IO，单线模式中为串行输出，适用于FLASH 1。
+(4) BK1_IO1：在双线 / 四线模式中为双向 IO，单线模式中为串行输入，适用于FLASH 1。
+(5) BK1_IO2：在四线模式中为双向 IO，适用于 FLASH 1。
+(6) BK1_IO3：在四线模式中为双向 IO，适用于 FLASH 1。
