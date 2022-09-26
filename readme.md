@@ -267,4 +267,15 @@ Note right of C: 没人陪我玩
         测试报告                               : 48h
 ```
 
+ ```mermaid
+graph LR
+sdio[ns_sdio.h] ==> sdio_wifi_cmd[sdio_wifi_cmd.h]
+wireless_link_components_conf[wireless_link_components_conf.h] ==> marvell88w8801_core[marvell88w8801_core.h]
+sdio_wifi_cmd ==> marvell88w8801_core
+marvell88w8801_core ==> wifi_app[wifi.h]
+lwip[lwip] ==> wifi_app
+
+wifi_app ==> main[main.c]
+CJSON[cjson.h] ==> main
+```
 
