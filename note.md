@@ -31,7 +31,8 @@ MCU J16 pin顺序
 
 ULP MCU:Ultra-Low Power MCU超低功耗MCU
 
-NMSIS:  SIS software interface standard
+
+NMSIS: nuclei mcu software interface standard  
 ILM:
 pin:引脚
 IO pad即芯片输入输出的管腿，是一个芯片管脚处理模块，即可以将芯片管脚的信号经过处理送给芯片内部，又可以将芯片内部输出的信号经过处理送到芯片管脚。输入信号处理包含时钟信号，复位信号等，输出信号包含观察时钟、中断等。IO pad模块可以控制输入输出信号的电平、驱动电流等，同时还包含了检测功能。
@@ -207,3 +208,19 @@ XIP eXecute In Place 就地执行
 (4) BK1_IO1：在双线 / 四线模式中为双向 IO，单线模式中为串行输入，适用于FLASH 1。
 (5) BK1_IO2：在四线模式中为双向 IO，适用于 FLASH 1。
 (6) BK1_IO3：在四线模式中为双向 IO，适用于 FLASH 1。
+
+FAT:File Allocation Table 文档分配表
+NTFS (New Technology File System)
+Windows NT 操作环境和 Windows NT 高级服务器网络操作系统环境的文件系统
+
+磁盘容量 = 盘面数x柱面数x扇面数x512字节
+
+扇区：512 bytes 最小存储单元
+簇---文件管理的最小单元
+
+FAT32分区空间大小
+分区空间大小        每个簇的扇区             簇空间大小
+    <8GB                8                    4k
+    8-16GB              16                  8k
+    16-32GB             32                  16k
+    32GB                64                  32k
